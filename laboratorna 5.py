@@ -22,6 +22,13 @@ def add_student(student_id, institution_id):
     educational_kind = institutions[institution_id]["kind"]
     print(f"{student_id} додано до {educational_name} ({educational_kind})")
 
+def delete_student(student_id):
+    if student_id in students:
+        del students[student_id]
+        print(f"Учня {student_id} видалено.")
+    else:
+        print(f"Такий учень не навчається в жодному з існуючих навчальних закладів.")
+
 def sum_school_students():
     count = 0
     for student in students.values():
@@ -43,6 +50,13 @@ if choice == "1":
             add_student(student_id, institution_id)
         except ValueError:
             print("Неіснуючий заклад.")
+elif choice == "2":
+    print("\nВведіть ім'я учня для видалення. Щоб завершити, напишіть стоп, коли вписуватимете ім'я учня, якого видалятимете.")
+    while True:
+        student_id = input("\nВведіть ім’я учня для видалення: ")
+        if student_id.lower() == "стоп":
+            break
+        delete_student(student_id)
 
 print("\nНавчальні заклади:")
 for educational_id, info in institutions.items():
@@ -55,5 +69,6 @@ for name, data in students.items():
     print(f"- {name} навчається у {educational_name}")
 
 sum_school_students()
+
 
 
