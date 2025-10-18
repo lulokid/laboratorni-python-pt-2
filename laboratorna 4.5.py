@@ -3,12 +3,12 @@
 def text():
     rechennya = input("Введіть текст: ")
 
-    letters = []
+    letters = set()
     for ch in rechennya:
-        if 'a' <= ch <= 'z' and ch not in letters:
-            letters.append(ch)
-    letters.sort()
-    print(f"Множина літер: {letters}")
+        if 'a' <= ch <= 'z':
+            letters.add(ch)
+    sorted_letters = sorted(letters)
+    print(f"Множина літер: {set(sorted_letters)}")
 
     znaky = ".,!?;:-()[]\"'/"
 
@@ -17,5 +17,6 @@ def text():
         if ch in znaky:
             count += 1
     print(f"Кількість розділових знаків: {count}")
+
 
 text()
