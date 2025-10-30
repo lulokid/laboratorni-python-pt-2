@@ -1,11 +1,6 @@
 #Розробити програму, яка: а) створює текстовий файл TF13_1 із символьних рядків різної довжини, слова в яких розділені пробілами і розділовими знаками;
 # б) читає вміст файла TF13_1, знаходить слова, які розпочинаються голосною літерою і записує кожне в окремий рядок файла TF13_2;
 # в) читає вміст файла TF13_2 і друкує його по рядках.
-import os
-
-file_path = os.path.abspath("TF13_1.txt")
-print("Повний шлях до файлу:", file_path)
-
 def Open(file_name, mode):
     try:
         file = open(file_name, mode)
@@ -37,7 +32,7 @@ file_2_w = Open(file2_name, "w")
 if file_2_r != None or file_2_w != None:
     for block in file_2_r.read().split(", "):
         for word in block.split(" "):
-          if word.lower().startswith(("а", "е", "и", "і", "о", "у")): #використав функцію startswith для перевірки того, чи починається слово рядка з великої літери, чи ні
+          if word.lower().startswith(("а", "е", "и", "і", "о", "у")): #використав функцію startswith для перевірки того, чи починається слово рядка з голосної літери, чи ні
              file_2_w.write(word + '\n')
 
     file_2_r.close()
@@ -53,5 +48,6 @@ if file_3_r != None:
     for line in file_3_r.read().split():
         print(line)
     print("Файл TF13_2.txt закрився")
+
 
     file_3_r.close()
